@@ -1,0 +1,165 @@
+# =======================================
+# === Global ignores
+# =======================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
+node_modules/
+dist/
+build/
+out/
+coverage/
+.env
+.env.*
+!.env.example
+*.iml
+
+# =======================================
+# === GitHub Actions & Docs
+# =======================================
+.github/workflows/*.log
+.github/workflows/*.tmp
+.github/workflows/*.bak
+docs/_site/
+docs/.cache/
+docs/node_modules/
+docs/.vitepress/dist/
+docs/.docusaurus/
+docs/build/
+docs/.temp/
+docs/.vite/
+docs/.next/
+docs/.vercel/
+docs/.output/
+docs/.cache-loader/
+
+# =======================================
+# === Frontend (React)
+# =======================================
+ams-frontend/node_modules/
+ams-frontend/.env
+ams-frontend/.env.local
+ams-frontend/.env.development
+ams-frontend/.env.production
+ams-frontend/build/
+ams-frontend/dist/
+ams-frontend/coverage/
+ams-frontend/.eslintcache
+ams-frontend/.parcel-cache
+ams-frontend/.next/
+ams-frontend/.vercel/
+ams-frontend/.turbo/
+ams-frontend/.vscode/
+ams-frontend/*.log
+ams-frontend/.cache/
+ams-frontend/npm-debug.log*
+ams-frontend/yarn-error.log*
+
+# =======================================
+# === Backend (Spring Boot)
+# =======================================
+ams-backend/target/
+ams-backend/build/
+!ams-backend/gradle/wrapper/gradle-wrapper.jar
+ams-backend/.gradle/
+ams-backend/mvnw
+ams-backend/mvnw.cmd
+
+# Environment and Config Files
+ams-backend/.env
+ams-backend/.env.*
+ams-backend/src/main/resources/application.properties
+ams-backend/src/main/resources/application.yml
+ams-backend/src/main/resources/application-*.properties
+ams-backend/src/main/resources/application-*.yml
+!ams-backend/src/main/resources/application-example.properties
+
+# Logs
+ams-backend/*.log
+ams-backend/logs/
+spring.log
+
+# Compiled class files
+*.class
+*.war
+*.ear
+*.jar
+
+# IDE & Build
+ams-backend/.classpath
+ams-backend/.project
+ams-backend/.settings/
+ams-backend/.idea/
+ams-backend/.vscode/
+ams-backend/.apt_generated/
+ams-backend/.factorypath/
+
+# =======================================
+# === Docker & Scripts
+# =======================================
+ams-docker/.env
+ams-docker/.env.*
+ams-docker/*.log
+ams-docker/*.pid
+ams-docker/.cache/
+ams-docker/tmp/
+ams-docker/docker-compose.override.yml
+
+ams-scripts/*.log
+ams-scripts/tmp/
+ams-scripts/.cache/
+ams-scripts/.DS_Store
+
+# =======================================
+# === Database and Data files
+# =======================================
+*.sql
+*.db
+*.sqlite
+*.rdb
+*.psql
+
+# =======================================
+# === System files
+# =======================================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.class
+*.pyc
+__pycache__/
+*.pyo
+*.exe
+*.dll
+*.so
+*.dylib
+
+# =======================================
+# === OS-specific
+# =======================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# =======================================
+# === Logs & Reports
+# =======================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+test-output/
+logs/
+*.log

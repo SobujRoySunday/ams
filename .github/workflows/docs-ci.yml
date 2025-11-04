@@ -1,0 +1,41 @@
+name: Documentation CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-docs:
+    name: Validate Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Validate Markdown syntax
+      - name: Lint Markdown files
+        uses: avto-dev/markdown-lint@v1
+        with:
+          config: ".markdownlint.yml"
+          args: "**/*.md"
+
+      # Check for broken links
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose ./docs/**/*.md
+
+      # Validate Swagger/OpenAPI specs
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install swagger-cli
+        run: npm install -g @apidevtools/swagger-cli
+      - name: Validate OpenAPI files
+        run: swagger-cli validate docs/api/openapi.yaml

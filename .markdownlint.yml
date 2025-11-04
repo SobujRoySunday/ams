@@ -1,0 +1,10 @@
+# Markdownlint configuration for AMS documentation
+
+default: true
+
+# Rules to disable or modify
+MD013: false # Ignore line length
+MD033: false # Allow inline HTML
+MD034: false # Allow bare URLs without angle brackets
+MD029: false # Disable ordered list item prefix rule
+MD041: false # Disable "first line should be a heading" rule
