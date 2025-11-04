@@ -33,7 +33,7 @@ jobs:
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --no-progress ./docs/**/*.md
+          args: --verbose ./docs/**/*.md
           fail: true
 
       # Validate Swagger/OpenAPI specs
