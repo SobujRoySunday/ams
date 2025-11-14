@@ -74,11 +74,6 @@ ams-backend/mvnw.cmd
 # Environment and Config Files
 ams-backend/.env
 ams-backend/.env.*
-ams-backend/src/main/resources/application.properties
-ams-backend/src/main/resources/application.yml
-ams-backend/src/main/resources/application-*.properties
-ams-backend/src/main/resources/application-*.yml
-!ams-backend/src/main/resources/application-example.properties
 
 # Logs
 ams-backend/*.log
