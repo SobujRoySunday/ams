@@ -1,0 +1,1 @@
+- REQ-6: The system should allow users to change their password securely via email verification

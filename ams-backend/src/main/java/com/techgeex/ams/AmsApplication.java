@@ -1,13 +1,13 @@
-package com.techgeex.ams_backend;
+package com.techgeex.ams;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AmsBackendApplication {
+public class AmsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AmsBackendApplication.class, args);
+		SpringApplication.run(AmsApplication.class, args);
 	}
 
 }
