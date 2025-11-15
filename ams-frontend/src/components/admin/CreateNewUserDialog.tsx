@@ -50,6 +50,7 @@ const CreateNewUserDialog = ({ onClose }: { onClose: () => void }) => {
       if (selectedRole === "ROLE_STUDENT")
         await UserService.createStudent({ ...user, ...student });
     } catch (error) {
+      console.error(error);
       setError("Error creating new account");
     } finally {
       onClose();
@@ -83,11 +84,10 @@ const CreateNewUserDialog = ({ onClose }: { onClose: () => void }) => {
       <form onSubmit={handleSubmit}>
         {/* user details */}
         <div
-          className={`${
-            selectedRole === "ROLE_FACULTY" || selectedRole === "ROLE_STUDENT"
-              ? "grid grid-cols-2 items-start"
-              : ""
-          }`}
+          className={`${selectedRole === "ROLE_FACULTY" || selectedRole === "ROLE_STUDENT"
+            ? "grid grid-cols-2 items-start"
+            : ""
+            }`}
         >
           <CardContent className="grid gap-4 min-w-[300px]">
             <div className="grid gap-2">
@@ -97,7 +97,7 @@ const CreateNewUserDialog = ({ onClose }: { onClose: () => void }) => {
                 onValueChange={(value) => setSelectedRole(value as UserRole)}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a fruit" />
+                  <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>

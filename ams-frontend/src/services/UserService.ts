@@ -1,4 +1,4 @@
-import type { User } from "@/types/auth";
+import type { User, UserRole } from "@/types/auth";
 import api from "../lib/api";
 
 const UserService = {
@@ -28,11 +28,17 @@ const UserService = {
   getAllUsers: async (): Promise<User[]> => {
     try {
       const response = await api.get("/users");
-      return response.data.map((userData: any) => ({
-        fullName: userData.fullName,
-        email: userData.email,
-        role: userData.roles[0].name,
-      }));
+      return response.data.map(
+        (userData: {
+          fullName: string;
+          email: string;
+          roles: { name: string }[];
+        }) => ({
+          fullName: userData.fullName,
+          email: userData.email,
+          role: userData.roles[0].name as UserRole,
+        })
+      );
     } catch (error) {
       console.error("Error fetching users:", error);
       return [];
@@ -79,6 +85,48 @@ const UserService = {
       await api.post("/users/createStudent", studentData);
     } catch (error) {
       console.error("Error creating student account:", error);
+      throw error;
+    }
+  },
+
+  uploadAdmin: async (file: File | null): Promise<void> => {
+    if (!file) throw new Error("No file provided");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      await api.post("/users/uploadAdmins", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (error) {
+      console.error("Error uploading admin CSV:", error);
+      throw error;
+    }
+  },
+
+  uploadFaculty: async (file: File | null): Promise<void> => {
+    if (!file) throw new Error("No file provided");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      await api.post("/users/uploadFaculties", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (error) {
+      console.error("Error uploading faculty CSV:", error);
+      throw error;
+    }
+  },
+
+  uploadStudent: async (file: File | null): Promise<void> => {
+    if (!file) throw new Error("No file provided");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      await api.post("/users/uploadStudents", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+    } catch (error) {
+      console.error("Error uploading student CSV:", error);
       throw error;
     }
   },

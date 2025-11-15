@@ -12,10 +12,12 @@ import type { User } from "@/types/auth";
 import { useEffect, useState } from "react";
 import UserService from "@/services/UserService";
 import CreateNewUserDialog from "./CreateNewUserDialog";
+import BulkUploadDialog from "./BulkUploadDialog";
 
 const UserManagementPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [newUserDialogOpen, setNewUserDialogOpen] = useState(false);
+  const [bulkUploadDialogOpen, setBulkUploadDialogOpen] = useState(false);
 
   useEffect(() => {
     async function fetchUsers() {
@@ -36,6 +38,15 @@ const UserManagementPage: React.FC = () => {
         </div>
       )}
 
+      {bulkUploadDialogOpen && (
+        <div
+          className="w-screen h-screen absolute top-0 left-0 bg-black/80 flex
+        justify-center items-center z-50"
+        >
+          <BulkUploadDialog onClose={() => setBulkUploadDialogOpen(false)} />
+        </div>
+      )}
+
       <div className="flex justify-between items-center">
         <h2 className="text-3xl font-bold mb-4">User Management</h2>
         <div className="flex space-x-4">
@@ -46,7 +57,13 @@ const UserManagementPage: React.FC = () => {
           >
             Create New User
           </Button>
-          <Button variant="outline">Upload CSV</Button>
+          <Button
+            variant="outline"
+            onClick={() => setBulkUploadDialogOpen((prev) => !prev)}
+            className="cursor-pointer"
+          >
+            Upload CSV
+          </Button>
         </div>
       </div>
       <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
@@ -67,8 +84,8 @@ const UserManagementPage: React.FC = () => {
                   {user.role === "ROLE_ADMIN"
                     ? "ADMIN"
                     : user.role === "ROLE_FACULTY"
-                    ? "FACULTY"
-                    : "STUDENT"}
+                      ? "FACULTY"
+                      : "STUDENT"}
                 </TableCell>
               </TableRow>
             ))}
